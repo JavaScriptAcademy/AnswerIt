@@ -1,0 +1,26 @@
+<template name = "question">
+  <p> {{questionText}}</p>
+  <p>
+  {{#if isStudent}}
+    <ul>
+    {{#each options}}
+      <li>
+      	<p>
+      		<input  type="radio" name={{questionId}} value={{optionName}} class = "ratioButton {{questionId}}">{{optionName}}.    {{optionText}}
+      	</p>
+      </li>
+    {{/each}}
+    </ul>
+  {{else}}
+  	<ul>{{#each options}}
+      <li>
+      	<p>
+      	 {{optionName}}.    {{optionText}}   {{optionVote}}
+      	</p>
+      </li>
+    {{/each}}
+    </ul>
+  {{/if}}
+
+  </p>
+</template>

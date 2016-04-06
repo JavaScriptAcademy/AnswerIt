@@ -1,0 +1,50 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/5.7.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'meteor/aldeed:simple-schema' ]
+2 info using npm@3.6.0
+3 info using node@v5.7.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData meteor/aldeed:simple-schema
+8 silly fetchOtherPackageData meteor/aldeed:simple-schema
+9 silly cache add args [ 'meteor/aldeed:simple-schema', null ]
+10 verbose cache add spec meteor/aldeed:simple-schema
+11 silly cache add parsed spec Result {
+11 silly cache add   raw: 'meteor/aldeed:simple-schema',
+11 silly cache add   scope: null,
+11 silly cache add   name: null,
+11 silly cache add   rawSpec: 'meteor/aldeed:simple-schema',
+11 silly cache add   spec: '/Users/layne/Documents/dev/meteor/answer-it/meteor/aldeed:simple-schema',
+11 silly cache add   type: 'local' }
+12 error addLocal Could not install /Users/layne/Documents/dev/meteor/answer-it/meteor/aldeed:simple-schema
+13 silly fetchPackageMetaData Error: ENOENT: no such file or directory, open '/Users/layne/Documents/dev/meteor/answer-it/meteor/aldeed:simple-schema'
+13 silly fetchPackageMetaData     at Error (native)
+13 silly fetchPackageMetaData  error for meteor/aldeed:simple-schema { [Error: ENOENT: no such file or directory, open '/Users/layne/Documents/dev/meteor/answer-it/meteor/aldeed:simple-schema']
+13 silly fetchPackageMetaData   errno: -2,
+13 silly fetchPackageMetaData   code: 'ENOENT',
+13 silly fetchPackageMetaData   syscall: 'open',
+13 silly fetchPackageMetaData   path: '/Users/layne/Documents/dev/meteor/answer-it/meteor/aldeed:simple-schema' }
+14 silly rollbackFailedOptional Starting
+15 silly rollbackFailedOptional Finishing
+16 silly runTopLevelLifecycles Starting
+17 silly runTopLevelLifecycles Finishing
+18 silly install printInstalled
+19 verbose stack Error: ENOENT: no such file or directory, open '/Users/layne/Documents/dev/meteor/answer-it/meteor/aldeed:simple-schema'
+19 verbose stack     at Error (native)
+20 verbose cwd /Users/layne/Documents/dev/meteor/answer-it
+21 error Darwin 15.2.0
+22 error argv "/usr/local/Cellar/node/5.7.0/bin/node" "/usr/local/bin/npm" "install" "meteor/aldeed:simple-schema"
+23 error node v5.7.0
+24 error npm  v3.6.0
+25 error path /Users/layne/Documents/dev/meteor/answer-it/meteor/aldeed:simple-schema
+26 error code ENOENT
+27 error errno -2
+28 error syscall open
+29 error enoent ENOENT: no such file or directory, open '/Users/layne/Documents/dev/meteor/answer-it/meteor/aldeed:simple-schema'
+30 error enoent ENOENT: no such file or directory, open '/Users/layne/Documents/dev/meteor/answer-it/meteor/aldeed:simple-schema'
+30 error enoent This is most likely not a problem with npm itself
+30 error enoent and is related to npm not being able to find a file.
+31 verbose exit [ -2, true ]
