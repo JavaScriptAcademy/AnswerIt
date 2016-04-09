@@ -12,6 +12,7 @@
     {{/each}}
     </ul>
   {{else}}
+    {{> d3vis id=_id}}
   	<ul>{{#each options}}
       <li>
       	<p>
@@ -21,6 +22,11 @@
     {{/each}}
     </ul>
   {{/if}}
-
   </p>
+</template>
+
+<template name="d3vis">
+  <div class="d3board" height="300px" width="300px">
+    <svg id="{{id}}" class="d3vis" ></svg>
+  </div>
 </template>

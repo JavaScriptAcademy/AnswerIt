@@ -9,6 +9,12 @@ import { Questions } from '../api/questions.js';
  
 import './body.html';
 
+// Accounts.onCreateUser((options, user) => {
+//   console.log("created user");
+//   user.profile.isTeacher = false;
+//   return user;
+// });
+
 Template.body.onCreated(function bodyOnCreated() {
   Meteor.subscribe('questions');
   this.state = new ReactiveDict();

@@ -23,3 +23,4 @@ accounts-password
 practicalmeteor:mocha
 meteor-tool
 aldeed:simple-schema
+d3js:d3
