@@ -30,18 +30,16 @@ a {
 }
 
 section#menu{
-  float: left;
+  display: table-cell; 
   width: 20%;
-  height: 500px;
   padding: 20px 0px 0px 0px;
   background-color: #315481;
   background-image: linear-gradient(to bottom, #315481, #918e82 50%);
 }
 
 section#content{
-  float: left;
+  display: table-cell;
   width: 80%;
-  height: 500px;
 }
 
 header {
@@ -94,7 +92,15 @@ ul {
   padding: 0;
 }
 
+.questionText {
+  margin-left: 10px;
+  font-weight: bold;
+}
 
+.d3board {
+  width: 50%;
+  margin: 0 auto;
+}
 
 .delete {
   float: right;
@@ -138,9 +144,29 @@ header .hide-completed {
   margin-left: 5px;
 }
 
+.correct-answer {
+  color: red;
+}
+
+.votes {
+  display: inline;
+  color: lightgrey;
+}
+
+.testName {
+  color: lightgrey;
+  font-weight: bold;
+}
+
+.home {
+  height:400;
+  background-image: url("https://s-media-cache-ak0.pinimg.com/236x/cb/ab/1c/cbab1c3a7e8e7527243cabaa5f81f53b.jpg");
+  background-size:cover;
+}
+
 @media (max-width: 600px) {
   li {
-    padding: 12px 15px;
+    padding: 6px 7.5px;
   }
 
   .search {

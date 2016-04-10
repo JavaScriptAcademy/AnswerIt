@@ -13,6 +13,17 @@ Template.question.helpers({
      return this.owner !== Meteor.userId();
   },
 
+  isCorrectAnswer(id) {
+    var question = Questions.findOne( {
+      _id: id
+    });
+    if (question.correctAnswer === this.optionName) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
   options() {
   	var id = this._id;
   	_.each(this.options, function(option){
@@ -78,8 +89,8 @@ Template.d3vis.onRendered(function() {
 
       Tracker.autorun(function () {
             window.d3vis.margin = {top: 20, right: 20, bottom: 70, left: 40},
-            window.d3vis.width = 200 - window.d3vis.margin.left - window.d3vis.margin.right,
-            window.d3vis.height = 200 - window.d3vis.margin.top - window.d3vis.margin.bottom;
+            window.d3vis.width = 190 - window.d3vis.margin.left - window.d3vis.margin.right,
+            window.d3vis.height = 190 - window.d3vis.margin.top - window.d3vis.margin.bottom;
 
             window.d3vis.x = d3.scale.ordinal().rangeRoundBands([0, window.d3vis.width], .05);
 
@@ -133,7 +144,7 @@ Template.d3vis.onRendered(function() {
           .call(window.d3vis.yAxis)
         .append("text")
           .attr("transform", "rotate(270)")
-          .attr("y", 0 - 25)
+          .attr("y", 0 - 35)
           .attr("x",0 )
           .attr("dy", "1em")
           .style("text-anchor", "end")

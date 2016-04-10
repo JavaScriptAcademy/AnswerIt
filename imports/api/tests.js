@@ -2,8 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { Questions } from './questions.js';
 
-
- 
 export const Tests = new Mongo.Collection('tests'); 
 if (Meteor.isServer) {
   // This code only runs on the server

@@ -1,5 +1,5 @@
 <template name = "question">
-  <p> {{questionText}}</p>
+  <p class="questionText"> {{questionText}}</p>
   <p>
   {{#if isStudent}}
     <ul>
@@ -15,9 +15,18 @@
     {{> d3vis questionId = _id}}
   	<ul class="options">{{#each options}}
       <li>
-      	<p>
-      	 {{optionName}}.    {{optionText}}   {{optionVote}}
-      	</p>
+       {{#if isCorrectAnswer ../_id }}
+      
+      	<p class = "correct-answer">
+      	 {{optionName}}.    {{optionText}}  
+         <div class="votes">  ({{optionVote}})</div>
+      	</p>      
+       {{else}}
+        <p>
+         {{optionName}}.    {{optionText}}  
+         <div class="votes">  ({{optionVote}})</div>
+        </p>    
+       {{/if}}
       </li>
     {{/each}}
     </ul>

@@ -14,27 +14,6 @@ if (Meteor.isServer) {
 }
  
 
-Meteor.methods({
- 'questions.updateOptionVote'(questionId, optionName, increase) {
-    var question = Questions.findOne( {
-      _id: questionId
-    });
-    var  option= question.options.filter( function(option) {
-        return option.optionName === optionName;
-    })[0];
-    
-    if (increase === 'true') {
-      option.optionVote ++;
-    } else {
-      option.optionVote --;
-    } 
-    Questions.update(questionId, question);
 
-  },
-
- 
-
-
-});
 
 

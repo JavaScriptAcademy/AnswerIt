@@ -1,39 +1,10 @@
-<body>
-  <!-- <div class="container">
-    <header>
-    <h1>Test</h1>
-    {{> loginButtons}}
-    </header>
-    <div>
-      <section id="menu">
-        <ul>
-          {{#each tests}}
-          <li>
-            <a class="link" href="#" >
-            {{name}}
-            </a>
-          </li>
-          {{/each}}
-        </ul>
-      </section>
-      <section id="content">
-         {{>yield}}
-      </section>
-    </div> -->
-
-    
-<!--    <ul>
-      {{#each questions}}
-       <p> {{@index}} .{{> question}} </p>
-      {{/each}}
-    </ul>
--->  
+<body> 
 </body>
 
 <template name="layout">
    <div class="container">
       <header>
-      <h1>Test</h1>
+      <h1>Answer It!</h1>
       {{> loginButtons}}
       </header>
       <div>
@@ -41,7 +12,7 @@
           <ul>
             {{#each tests}}
             <li>
-              <a class="link" href="/test/{{_id}}" >
+              <a class="testName" href="/test/{{_id}}" >
               {{name}}
               </a>
             </li>
@@ -57,14 +28,7 @@
 
  
 <template name = "home">
-Home Page
+  <div class="home">
+  </div>
 </template>
 
-<!-- <template name = "content">
-<ul>11111111
- {{#each questions}}
-    <p> {{@index}} .{{> question}} </p>
-  {{/each}}
- 
-</ul>
-</template> -->
