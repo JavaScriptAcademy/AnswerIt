@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
  
 import { Questions } from '../api/questions.js';
+import { Tests } from '../api/tests.js';
+
 import{Session} from 'meteor/session';
 import './question.html';
 
@@ -35,10 +37,10 @@ Template.question.events({
 
     if (lastSelectedEl) {
       updateAttribute(lastSelectedEl);
-      Meteor.call('questions.updateOptionVote' , name, lastSelectedEl.value, 'false' );
+      Meteor.call('tests.updateQuestionOptionVote' , name, lastSelectedEl.value, 'false' );
     }
     event.target.setAttribute("data-selected", 'true');
-    Meteor.call('questions.updateOptionVote' , name, value, 'true' );
+    Meteor.call('tests.updateQuestionOptionVote' , name, value, 'true' );
   },
 
 
@@ -69,27 +71,13 @@ function updateAttribute(el) {
 
 
 Template.d3vis.onRendered(function() {
-    // Defer to make sure we manipulate DOM
-   // debugger;
-    var  QID = Template.currentData().id;
+   
+    var  QID = Template.currentData().questionId;
     var QID = '' + QID;
-    console.log("QID : "+ QID);
-
-    // console.log("Set Attribute");
-
-   // _.defer(function () {
-     // var questionIdVar = new ReactiveVar();
-      // Use this as a global variable 
       window.d3vis = {};
 
-      // Deps.autorun(function () {
-      //   questionIdVar.set(Template.currentData().id);
-      // });
-
       Tracker.autorun(function () {
-      //Deps.autorun(function () {
-        //if (Deps.currentComputation.firstRun) {
-           window.d3vis.margin = {top: 20, right: 20, bottom: 70, left: 40},
+            window.d3vis.margin = {top: 20, right: 20, bottom: 70, left: 40},
             window.d3vis.width = 200 - window.d3vis.margin.left - window.d3vis.margin.right,
             window.d3vis.height = 200 - window.d3vis.margin.top - window.d3vis.margin.bottom;
 
@@ -108,38 +96,24 @@ Template.d3vis.onRendered(function() {
             .orient("left")
             .ticks(5)
             .tickFormat(d3.format("d"));
-
-           // debugger;
-           //console.log("className"+".d3vis "+QID);
-            // var el = $("#" + QID);
-            console.log("el", $("#" + QID));
-            console.log("elChild", $("#" + QID).firstChild);
-            $( "#" + QID + " svg" ).remove();
-            // console.log("firstChild", el.firstChild);
-            //el.removeChild(el.firstChild);
-
-          //window.d3vis.svg = d3.select("#" + QID).append("svg")
+         
+            if($( "#" + QID + " svg" )!==null)
+              $( "#" + QID + " svg" ).remove();
           window.d3vis.svg = d3.select("#" + QID).append("svg")  
             .attr("width", window.d3vis.width + window.d3vis.margin.left + window.d3vis.margin.right)
             .attr("height", window.d3vis.height + window.d3vis.margin.top + window.d3vis.margin.bottom)
           .append("g")
             .attr("transform", 
                   "translate(" + window.d3vis.margin.left + "," + window.d3vis.margin.top + ")");
-          console.log("going out");
-      //  }
-      
-        //var id = questionIdVar.get();
-        var data = Questions.findOne({_id: QID}).options;
-        // var data = [{
-        //   optionName: "A",
-        //   optionVote: 0
-        // },{
-        //   optionName:"B",
-        //   optionVote: 3
-        // }]
-        console.log(data);
-        //debugger;
 
+        var quest = Questions.findOne({_id: QID});
+        var testId = quest.testId;
+        var test = Tests.findOne({_id: testId});
+        
+        var question = test.questions.filter(function(question) {
+          return question._id === QID;
+        } )[0];
+        var data = question.options;       
         window.d3vis.x.domain(data.map(function(d) { return d.optionName; }));
         window.d3vis.y.domain([0, d3.max(data, function(d) { 
         return d.optionVote; })]);
@@ -164,8 +138,6 @@ Template.d3vis.onRendered(function() {
           .attr("dy", "1em")
           .style("text-anchor", "end")
           .text("Person(s)");
-          
-
 
         window.d3vis.svg.selectAll("bar")
           .data(data)
@@ -178,7 +150,6 @@ Template.d3vis.onRendered(function() {
 
       });  
     
-  //});
 });
 
 

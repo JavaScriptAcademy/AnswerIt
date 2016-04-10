@@ -17,11 +17,31 @@ body {
   font-size: 14px;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 .container {
   max-width: 600px;
   margin: 0 auto;
   min-height: 100%;
   background: white;
+  position: relative;
+}
+
+section#menu{
+  float: left;
+  width: 20%;
+  height: 500px;
+  padding: 20px 0px 0px 0px;
+  background-color: #315481;
+  background-image: linear-gradient(to bottom, #315481, #918e82 50%);
+}
+
+section#content{
+  float: left;
+  width: 80%;
+  height: 500px;
 }
 
 header {
@@ -63,11 +83,18 @@ form {
   outline: 0;
 }
 
-ul {
+ul.options {
   margin: 0;
   padding: 0;
   background: white;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+
 
 .delete {
   float: right;
@@ -84,6 +111,7 @@ li {
   padding: 15px;
   border-bottom: #eee solid 1px;
 }
+
 
 li .text {
   margin-left: 10px;

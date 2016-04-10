@@ -12,8 +12,8 @@
     {{/each}}
     </ul>
   {{else}}
-    {{> d3vis id=_id}}
-  	<ul>{{#each options}}
+    {{> d3vis questionId = _id}}
+  	<ul class="options">{{#each options}}
       <li>
       	<p>
       	 {{optionName}}.    {{optionText}}   {{optionVote}}
@@ -27,6 +27,6 @@
 
 <template name="d3vis">
   <div class="d3board" height="300px" width="300px">
-    <svg id="{{id}}" class="d3vis" ></svg>
+    <svg id="{{questionId}}" class="d3vis" ></svg>
   </div>
 </template>

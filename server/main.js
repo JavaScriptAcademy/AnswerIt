@@ -1,9 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Questions } from '../imports/api/questions.js';
+import { Tests } from '../imports/api/tests.js';
 
 Meteor.startup(() => {
 
-  var questions = [
+if (Tests.find().count() === 0) {
+
+    var test1 = {
+      name: "General Test",
+      questions: [
           {
             questionText: 'Which one is a country?',
             options:[
@@ -20,7 +25,7 @@ Meteor.startup(() => {
               },
             ],
             correctAnswer: 'B',
-            owner: 'uu34TCfJNXXa5YAnL',
+            owner: 'fZQvQjHuJd3PWXgi7',
             username: 'layne',
 
           },
@@ -46,19 +51,28 @@ Meteor.startup(() => {
               }
             ],
             correctAnswer: 'A',
-            owner: 'uu34TCfJNXXa5YAnL',
+            owner: 'fZQvQjHuJd3PWXgi7',
             username: 'layne',
           },
-        ];
-        Questions.remove({});
- //if (Questions.find().count() === 0) {
-    questions.forEach((question)=> {
-      Questions.insert(question);
-    }
-  );
-//  }
+        ],
+    };
 
- 
+    var data = [];
+    data.push(test1);
+    _.each(data, function(test) {
+      var test_id = Tests.insert(test);
+      var questions= [];
+      _.each(test.questions, function(question) {
+        question.testId = test_id;
+        var q_id = Questions.insert(question);
+        question._id = q_id;
+        questions.push(question); 
+    });
+     
+      var result = Tests.update({_id: test_id},{name: test.name,questions: questions});
+   });
+
+}
 
 });
 

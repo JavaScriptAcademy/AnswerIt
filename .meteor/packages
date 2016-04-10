@@ -24,3 +24,5 @@ practicalmeteor:mocha
 meteor-tool
 aldeed:simple-schema
 d3js:d3
+alanning:roles
+iron:router

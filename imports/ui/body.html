@@ -1,17 +1,70 @@
 <body>
-  <div class="container">
+  <!-- <div class="container">
     <header>
     <h1>Test</h1>
     {{> loginButtons}}
     </header>
- 
-    <ul>
+    <div>
+      <section id="menu">
+        <ul>
+          {{#each tests}}
+          <li>
+            <a class="link" href="#" >
+            {{name}}
+            </a>
+          </li>
+          {{/each}}
+        </ul>
+      </section>
+      <section id="content">
+         {{>yield}}
+      </section>
+    </div> -->
+
+    
+<!--    <ul>
       {{#each questions}}
        <p> {{@index}} .{{> question}} </p>
       {{/each}}
     </ul>
-  </div>
+-->  
 </body>
 
+<template name="layout">
+   <div class="container">
+      <header>
+      <h1>Test</h1>
+      {{> loginButtons}}
+      </header>
+      <div>
+        <section id="menu">
+          <ul>
+            {{#each tests}}
+            <li>
+              <a class="link" href="/test/{{_id}}" >
+              {{name}}
+              </a>
+            </li>
+            {{/each}}
+          </ul>
+        </section>
+        <section id="content">
+           {{>yield}}
+        </section>
+      </div>
+   </div>
+</template>
 
  
+<template name = "home">
+Home Page
+</template>
+
+<!-- <template name = "content">
+<ul>11111111
+ {{#each questions}}
+    <p> {{@index}} .{{> question}} </p>
+  {{/each}}
+ 
+</ul>
+</template> -->

@@ -1,53 +1,27 @@
 
 import { Meteor } from 'meteor/meteor';
 import './question.js';
+import './content.js';
 
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Questions } from '../api/questions.js';
- 
+import { Tests } from '../api/tests.js';
+
 import './body.html';
 
-// Accounts.onCreateUser((options, user) => {
-//   console.log("created user");
-//   user.profile.isTeacher = false;
-//   return user;
-// });
 
-Template.body.onCreated(function bodyOnCreated() {
+Template.layout.onCreated(function bodyOnCreated() {
   Meteor.subscribe('questions');
-  this.state = new ReactiveDict();
+  Meteor.subscribe('tests');
 });
  
-Template.body.helpers({
-  questions() {
-  	var questions = Questions.find({});
-  	_.each(questions, function(question){
-
-  	});
-    return Questions.find({});
+Template.layout.helpers({
+  tests() {
+  	return Tests.find({});
   }
 });
 
 
-// Template.body.events({
-//   'submit .new-task'(event) {
-//     // Prevent default browser form submit
-//     event.preventDefault();
- 
-//     // Get value from form element
-//     const target = event.target;
-//     const text = target.text.value;
- 
-//     // Insert a task into the collection
-//      Meteor.call('tasks.insert', text);
 
- 
-//     // Clear form
-//     target.text.value = '';
-//   },
-//    'change .hide-completed input'(event, instance) {
-//     instance.state.set('hideCompleted', event.target.checked);
-//   },
-// });

@@ -8,8 +8,7 @@ if (Meteor.isServer) {
   // Only publish tasks that are public or belong to the current user
 
   Meteor.publish('questions', function tasksPublication() {
-  return Questions.find({
-     
+    return Questions.find({
     });
   });
 }
