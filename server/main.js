@@ -196,7 +196,7 @@ if (Tests.find().count() === 0) {
 
               }
             ],
-            correctAnswer: 'B',
+            correctAnswer: 'A',
             owner: 'fZQvQjHuJd3PWXgi7',
             username: 'layne',
           }

@@ -22,7 +22,7 @@ a {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   min-height: 100%;
   background: white;
@@ -30,6 +30,7 @@ a {
 }
 
 section#menu{
+  height: 700px;
   display: table-cell; 
   width: 20%;
   padding: 20px 0px 0px 0px;
@@ -38,6 +39,7 @@ section#menu{
 }
 
 section#content{
+  height: 700px;
   display: table-cell;
   width: 80%;
 }
@@ -159,10 +161,20 @@ header .hide-completed {
 }
 
 .home {
-  height:400;
+  height: 100%;
+  width:100%;
   background-image: url("https://s-media-cache-ak0.pinimg.com/236x/cb/ab/1c/cbab1c3a7e8e7527243cabaa5f81f53b.jpg");
   background-size:cover;
 }
+
+.answer_correct {
+  background-color: rgb(117, 201, 113);
+}
+
+.answer_wrong {
+  background-color: rgb(212, 106, 106);
+}
+
 
 @media (max-width: 600px) {
   li {

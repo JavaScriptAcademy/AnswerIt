@@ -44,9 +44,35 @@ Template.question.events({
     var value = event.target.getAttribute('value');
     var name = event.target.getAttribute('name');
 
+    var question = Questions.findOne(name);
+    var correctAnswer =question.correctAnswer;
+    console.log("element:" , event.target);
+    console.log("correctAnswer:", correctAnswer);
+    console.log("selectAnswer:", value);
+    console.log("parenet:", event.target.parentElement);
+
+    if(value === correctAnswer) {
+
+      event.target.parentElement.parentElement.classList.add("answer_correct");
+      console.log("add class correct");
+      // event.target.parentElement.className += " answer-correct";
+    } else {
+      console.log("add class wrong");
+      event.target.parentElement.parentElement.classList.add("answer_wrong");
+
+      // event.target.parentElement.className += " answer-wrong";
+    }
+
+
     var lastSelectedEl = findLastSelectedOne(name);
 
     if (lastSelectedEl) {
+      lastSelectedEl.parentElement.parentElement.classList.remove("answer_wrong");
+      lastSelectedEl.parentElement.parentElement.classList.remove("answer_correct");
+
+      // lastSelectedEl.parentElement.removeClass("answer_correct");
+      // lastSelectedEl.parentElement.removeClass("answer_wrong");
+
       updateAttribute(lastSelectedEl);
       Meteor.call('tests.updateQuestionOptionVote' , name, lastSelectedEl.value, 'false' );
     }
